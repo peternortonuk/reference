@@ -20,6 +20,10 @@ def my_decorator(fn):
     return wrapper
 
 
+def my_decorator_with_args(*args):
+    return my_decorator
+
+
 # without sugar
 def just_some_function1():
     print("Wheee!")
@@ -31,19 +35,25 @@ def just_some_function2():
     print("Whooo!")
 
 
+# with args
+@my_decorator_with_args(1, 2)
+def just_some_function3():
+    print("Whaaa!")
+
+
 # ==============================================================================
 # chained decorator
 
 def makebold(fn):
-    def wrapped():
+    def wrapper():
         return "<b>" + fn() + "</b>"
-    return wrapped
+    return wrapper
 
 
 def makeitalic(fn):
-    def wrapped():
+    def wrapper():
         return "<i>" + fn() + "</i>"
-    return wrapped
+    return wrapper
 
 
 @makebold
@@ -54,19 +64,20 @@ def hello():
 
 # ==============================================================================
 # decorator with arguments
-# need an extra nested function to accept passed function
+# need an extra nested function because first job is to return
+# function without args
 
 def decorator_with_args(arg1, arg2, arg3):
 
     def wrap(fn):
-        print "Inside wrap()"  # this doesn't execute!
+        print "Inside wrap()"  # executes when function is constructed
 
-        def wrapped_f(*args):  # a1, a2, a3, a4
+        def wrapper(*args):  # a1, a2, a3, a4
             print "Inside wrapped_f()"
             print "decorator_with_args arguments:", arg1, arg2, arg3
             fn(*args)
             print "After f(*args)"
-        return wrapped_f
+        return wrapper
 
     return wrap
 
@@ -88,6 +99,9 @@ if __name__ == "__main__":
 
     # with sugar
     just_some_function2()
+
+    # with args
+    just_some_function3()
 
     # ==========================================================================
     # chained decorator
