@@ -63,7 +63,7 @@ def decorator_with_args(arg1, arg2, arg3):
 
         def wrapped_f(*args):  # a1, a2, a3, a4
             print "Inside wrapped_f()"
-            print "Decorator arguments:", arg1, arg2, arg3
+            print "decorator_with_args arguments:", arg1, arg2, arg3
             fn(*args)
             print "After f(*args)"
         return wrapped_f
@@ -73,7 +73,7 @@ def decorator_with_args(arg1, arg2, arg3):
 
 @decorator_with_args("hello", "world", 42)
 def say_hello(a1, a2, a3, a4):
-    print 'sayHello arguments:', a1, a2, a3, a4
+    print 'say_hello arguments:', a1, a2, a3, a4
 
 
 # ==============================================================================
