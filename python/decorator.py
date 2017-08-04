@@ -90,8 +90,7 @@ def say_hello(a1, a2, a3, a4):
 # ==============================================================================
 if __name__ == "__main__":
 
-    # ==========================================================================
-    # simple decorator function
+    print('===== simple decorator function =====')
 
     # without sugar
     f1 = my_decorator(just_some_function1)
@@ -103,12 +102,10 @@ if __name__ == "__main__":
     # with args
     just_some_function3()
 
-    # ==========================================================================
-    # chained decorator
+    print('===== chained decorator =====')
     print hello()
 
-    # ==========================================================================
-    # decorator with arguments
+    print('===== decorator with arguments =====')
 
     say_hello("say", "hello", "argument", "list")
 

@@ -47,6 +47,10 @@ class Parent(object):
         print('Parent grok')
         self.spam()
 
+class Parent2(object):
+    def yow(self):
+        print('Parent2 yow')
+
 class Child1(Parent):
     def yow(self):
         print('Child1 yow')
@@ -55,18 +59,23 @@ class Child2(Parent):
     def spam(self):
         print('Child2 spam', self.value)
 
-class Child3(Parent):
+class Child4(Parent):
     def __init__(self, i):
-        super(Child3, self).__init__(i)
+        super(Child4, self).__init__(i)
         self.value = i
 
     def spam(self):
-        print('Child3 spam', self.value)
-        super(Child3, self).spam()
+        print('Child4 spam', self.value)
+        super(Child4, self).spam()
+
+class Child5(Parent, Parent2):
+    pass
 
 
 # ==============================================================================
 if __name__ == "__main__":
+
+    print('===== Classes and methods =====')
     # need to instantiate the object first
     print A().f(3)
 
@@ -102,9 +111,13 @@ if __name__ == "__main__":
     print(c2.value)
     c2.spam()
 
-    c3 = Child3(55)
-    print(c3.value)
-    c3.spam()
+    c4 = Child4(55)
+    print(c4.value)
+    c4.spam()
 
+    c5 = Child5(42)
+    c5.grok()
+    c5.spam()
+    c5.yow()
 
     pass
