@@ -34,46 +34,75 @@ class Holding(object):
         self.shares -= x
 
 # ==============================================================================
-# Inheritance
+# Simple Inheritance
+# 33-8.1 Inheritance Concepts.mp4
 
-class Parent(object):
+class Parent1(object):
     def __init__(self, value):
         self.value = value
 
     def spam(self):
-        print('Parent spam', self.value)
+        #super(Parent1, self).spam()
+        print('Parent1 spam', self.value)
 
     def grok(self):
-        print('Parent grok')
+        print('Parent1 grok')
         self.spam()
+
 
 class Parent2(object):
     def yow(self):
         print('Parent2 yow')
 
-class Child1(Parent):
+
+class Child1(Parent1):
     def yow(self):
         print('Child1 yow')
 
-class Child2(Parent):
+
+class Child2(Parent1):
     def spam(self):
         print('Child2 spam', self.value)
 
-class Child4(Parent):
-    def __init__(self, i):
-        super(Child4, self).__init__(i)
-        self.value = i
+
+class Child3(Parent1):
+     def spam(self):
+         super(Child3, self).spam()
+         print('Child3 spam', self.value)
+
+
+class Child4(Parent1):
+    # if i override the init method then i need to ensure the parent
+    # initialisation is supported
+    def __init__(self, value, extra):
+        super(Child4, self).__init__(value)
+        self.extra = extra
 
     def spam(self):
         print('Child4 spam', self.value)
         super(Child4, self).spam()
 
-class Child5(Parent, Parent2):
+
+class Child5(Parent1, Parent2):
     pass
+
+
+# ==============================================================================
+# Advanced Inheritance
+# 35-8.3 Advanced Inheritance.mp4
+
+class ChildMixin(object):
+    def spam(self):
+        print('Child mixin')
+        super(ChildMixin, self).spam()
+
+
+
+# ==============================================================================
 
 class Grandchild1(Child2):
     def spam(self):
-        super(Child2, self).spam()
+        #super(Child2, self).spam()
         super(Grandchild1, self).spam()
         print ('Grandchild1 spam')
 
@@ -102,8 +131,8 @@ if __name__ == "__main__":
     setattr(h, 'name', 'blahh')
     print(getattr(h, 'name'))
 
-    print('===== Inheritance =====')
-    p = Parent(25)
+    print('===== Simple Inheritance =====')
+    p = Parent1(25)
     p.spam()
     p.grok()
 
@@ -116,7 +145,11 @@ if __name__ == "__main__":
     print(c2.value)
     c2.spam()
 
-    c4 = Child4(55)
+    c3 = Child3(46)
+    c3.spam()
+    c3.grok()
+
+    c4 = Child4(55, 66)
     print(c4.value)
     c4.spam()
 
