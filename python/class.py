@@ -71,6 +71,11 @@ class Child4(Parent):
 class Child5(Parent, Parent2):
     pass
 
+class Grandchild1(Child2):
+    def spam(self):
+        super(Child2, self).spam()
+        super(Grandchild1, self).spam()
+        print ('Grandchild1 spam')
 
 # ==============================================================================
 if __name__ == "__main__":
@@ -119,5 +124,10 @@ if __name__ == "__main__":
     c5.grok()
     c5.spam()
     c5.yow()
+
+    # shows me the order of super()
+    print Grandchild1.__mro__
+    g1 = Grandchild1(1)
+    g1.spam()
 
     pass
