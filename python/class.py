@@ -82,7 +82,8 @@ class Child4(Parent1):
         print('Child4 spam', self.value)
         super(Child4, self).spam()
 
-
+# demonstrates multiple inheritance
+# an object of this type has access to both methods and attributes
 class Child5(Parent1, Parent2):
     pass
 
@@ -91,11 +92,21 @@ class Child5(Parent1, Parent2):
 # Advanced Inheritance
 # 35-8.3 Advanced Inheritance.mp4
 
+# a Mixin is intended to provide a piece of functionality common to MANY classes
+# its intended to be used alongside other classes and is not standalone
+# the Mixin inherits from object but the super method takes its functionality
+# from the associated class
+
 class ChildMixin(object):
     def spam(self):
         print('Child mixin')
         super(ChildMixin, self).spam()
 
+
+# the order here is very important; the base class goes on the right of the arg list
+# and then inheritance reads right-to-left
+class Child6(ChildMixin, Parent1):
+    pass
 
 
 # ==============================================================================
@@ -154,9 +165,14 @@ if __name__ == "__main__":
     c4.spam()
 
     c5 = Child5(42)
-    c5.grok()
-    c5.spam()
-    c5.yow()
+    c5.spam()  # from Parent1
+    c5.grok()  # from Parent1
+    c5.yow()  # from Parent2
+
+
+    print('===== Advanced Inheritance =====')
+    c6 = Child6(23)
+    c6.spam()
 
     # shows me the order of super()
     print Grandchild1.__mro__
