@@ -2,6 +2,8 @@
 
 
 class DoughFactory(object):
+    def order_pizza(self, *toppings):
+        print('not supposed to run')
 
     def get_dough(self):
         return 'insecticide treated wheat dough'
@@ -9,7 +11,7 @@ class DoughFactory(object):
 
 class Pizza(DoughFactory):
 
-    def order_pizza(self, *toppings):
+    def order_pizza1(self, *toppings):
         print('Getting dough')
         dough = super(Pizza, self).get_dough()
         print('Making pie with %s' % dough)
