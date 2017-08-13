@@ -106,17 +106,18 @@ class ChildMixin(object):
 
 
 # the order here is very important; the base class goes on the right of the arg list
-# and then inheritance reads right-to-left
+# this is no different to standard mro
+# it's just that you want the Mixin to override and call the next in line
+# TODO: check this assumption
+# TODO: why is there reference to reading right-to-left; it doesn't!
 class Child6(ChildMixin, Parent1):
     pass
 
 
-# ==============================================================================
-
 class Grandchild1(Child2):
     def spam(self):
-        super(Grandchild1, self).spam()
         print ('Grandchild1 spam')
+        super(Grandchild1, self).spam()
 
 # ==============================================================================
 if __name__ == "__main__":
@@ -180,13 +181,16 @@ if __name__ == "__main__":
 
 
     print('===== Advanced Inheritance =====')
-    c6 = Child6(23)
-    c6.spam()
+    c6 = Child6(100)
+    print(c6.value)
+    c6.spam()  # calls the mixin then the next-in-line method; being Parent1
+    print(Child6.__mro__)
     print
 
     # shows me the order of super()
+    g1 = Grandchild1(101)
+    print(g1.value)
+    g1.spam()  # g1.spam calls super; next in line is Child2 where inheritance halts; Parent1 has no spam method
     print Grandchild1.__mro__
-    g1 = Grandchild1(1)
-    g1.spam()  # g1.spam calls super; next in line is Child2 where inheritance halts
 
     pass
