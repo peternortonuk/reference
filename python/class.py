@@ -110,6 +110,7 @@ class ChildMixin(object):
 # it's just that you want the Mixin to override and call the next in line
 # TODO: check this assumption
 # TODO: why is there reference to reading right-to-left; it doesn't!
+# is it that you override from left-to-right; so you find the applicable method on the right of the list?
 class Child6(ChildMixin, Parent1):
     pass
 
