@@ -47,7 +47,18 @@ print iter_curves.next()
 print iter_curves.next()
 print iter_curves.next()
 print iter_curves.next()
-print iter_curves.next()
-print iter_curves.next()
+#print iter_curves.next()
+#print iter_curves.next()
+
+
+def cumsum(lst):
+    result = 0
+    import pdb; pdb.set_trace()
+    iter_ = iter(lst)
+    while True:
+        result += iter_.next()
+    yield result
+
+print (cumsum([1,2,3]))
 
 pass
