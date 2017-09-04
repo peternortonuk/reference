@@ -125,7 +125,12 @@ if __name__ == "__main__":
 
     print('===== Classes and methods =====')
     # need to instantiate the object first
+    # this is a bound method call
     print A().f(3)
+
+    # A.f() is an unbound method call, for that reason we need to pass self
+    obj = A()
+    print A.f(obj, 3)
 
     # don't need the object, just the class
     print B.f(4)
