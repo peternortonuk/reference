@@ -1,7 +1,8 @@
 '''
-decorator function is built to accept a passed function
-without syntactic sugar, we pass our new function to the decorator and get an
-enhanced function returned back. we can then run this new function
+a decorator function accepts a function as an argument and returns a modified function
+
+without syntactic sugar, we pass our function to the decorator and get an
+enhanced function returned back; we can then run this new function
 
 with syntactic sugar, we run in one line
 '''
