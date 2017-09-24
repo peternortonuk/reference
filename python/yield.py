@@ -62,3 +62,65 @@ def cumsum(lst):
 print (cumsum([1,2,3]))
 
 pass
+
+
+'''
+david beazley: iteration protocol and customisatoin via generators
+saved to google drive
+62-14.1
+'''
+
+names = ['YHOO', 'IBM', 'AAPL']
+for name in names:
+    print name
+
+# under the hood its doing this...
+it = names.__iter__()
+print it.next()
+print it.next()
+print it.next()
+print it.next()
+
+
+# this is a generator function
+def countdown(n):
+    print 'counting down from ', n
+    while n>0:
+        yield n
+        n -= 1
+    print 'done'
+
+# this doesnt do anything except assign the generator function
+y = countdown(5)
+print y
+
+# now the loop iterates through and each step runs the function
+for x in y:
+    print x
+
+
+# related to a list comprehension
+nums = [1, 2, 3, 4, 5, 6]
+squares = [x**2 for x in nums]
+print squares
+
+# we have generator expressions
+squares = (x**2 for x in nums)
+print squares
+
+# but they can't be re-used
+# one way around this is...
+
+class Countdown(object):
+    def __init__(self, n):
+        self.n = n
+    def __iter__(self):
+        print 'counting down from ', self.n
+        while self.n > 0:
+            yield self.n
+            self.n -= 1
+        print 'done'
+
+c = Countdown(5)
+for x in c:
+    print x
