@@ -21,10 +21,14 @@ from parrot.feeding.eating import eating
 # function given an alias
 from parrot.feeding.eating import chomping as ch
 
+# variables too
+from parrot.feeding.eating import apples
 
-# call functions
+
+# call them
 parrot.fighting.fighting()
 drinking.drinking()
 fl.flying()
 eating()
 ch()
+print apples
