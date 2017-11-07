@@ -1,4 +1,10 @@
+'''
+The Pyplot API
+https://matplotlib.org/api/pyplot_summary.html#the-pyplot-api
 
+Colors in Matplotlib
+https://matplotlib.org/api/pyplot_summary.html#colors-in-matplotlib
+'''
 
 from sklearn import datasets
 import matplotlib.pyplot as plt

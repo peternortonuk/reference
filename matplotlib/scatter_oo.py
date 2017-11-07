@@ -1,6 +1,9 @@
 '''
-http://matplotlib.org/api/_as_gen/matplotlib.pyplot.colors.html
+The Object-Oriented API
+https://matplotlib.org/api/pyplot_summary.html#the-object-oriented-api
 
+Colors in Matplotlib
+http://matplotlib.org/api/_as_gen/matplotlib.pyplot.colors.html
 '''
 
 
