@@ -6,7 +6,9 @@ from sklearn import datasets
 iris = datasets.load_iris()
 
 # create dataframe from numpy arrays
-df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
+df_data = pd.DataFrame(data=iris.data, columns=iris.feature_names)
+df_target = pd.DataFrame(data=iris.target, columns=['target'])
+df = pd.concat([df_data, df_target], axis=1)
 print df.head()
 
 # create mask

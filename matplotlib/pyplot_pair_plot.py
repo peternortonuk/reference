@@ -11,7 +11,7 @@ from sklearn import datasets
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 import numpy as np
-from pair_plot_function import scatterplot_matrix
+from pyplot_pair_function import scatterplot_matrix
 
 # import some data
 iris = datasets.load_iris()
