@@ -11,7 +11,10 @@ print df.head()
 
 # create mask and update values
 mask = df['sepal length (cm)'] > 5.0
+
+# df.loc[rows, columns]
 df.loc[mask, 'sepal width (cm)'] = 20
+
 print df.head()
 
 pass
