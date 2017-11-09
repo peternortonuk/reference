@@ -9,10 +9,10 @@ iris = datasets.load_iris()
 df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
 print df.head()
 
-# create mask and update values
+# create mask
 mask = df['sepal length (cm)'] > 5.0
 
-# df.loc[rows, columns]
+# update values as df.loc[rows, columns]
 df.loc[mask, 'sepal width (cm)'] = 20
 
 print df.head()
