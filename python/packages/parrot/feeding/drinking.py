@@ -1,0 +1,2 @@
+def drinking():
+    print'drinking'

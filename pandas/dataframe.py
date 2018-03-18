@@ -1,13 +1,22 @@
 
 import pandas as pd
+from sklearn import datasets
 
-def get_data(df):
-    month = df['month'] == pd.datetime(2017, 10, 1)
-    ins = df['ins_type'] == 'COMM-PHYS'
-    hub = df['location'] == 'GASPOOL'
-    mask = month & ins & hub
+# import some data
+iris = datasets.load_iris()
 
-    return df[mask]
+# create dataframe from numpy arrays
+df_data = pd.DataFrame(data=iris.data, columns=iris.feature_names)
+df_target = pd.DataFrame(data=iris.target, columns=['target'])
+df = pd.concat([df_data, df_target], axis=1)
+print df.head()
 
-data1 = get_data(job1['final_details']['Linear'])
-data2 = get_data(job2['final_details']['Linear'])
+# create mask
+mask = df['sepal length (cm)'] > 5.0
+
+# update values as df.loc[rows, columns]
+df.loc[mask, 'sepal width (cm)'] = 20
+
+print df.head()
+
+pass
