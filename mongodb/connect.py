@@ -3,16 +3,18 @@ import datetime
 import pprint as pp
 
 # some test data; a pretend blog post
-post = {"author": "Mike",
-        "text": "My first blog post!",
-        "tags": ["mongodb", "python", "pymongo"],
-        "date": datetime.datetime.utcnow()}
+post = {'author': 'Mike',
+        'text': 'My first blog post!',
+        'tags': ['mongodb', 'python', 'pymongo'],
+        'date': datetime.datetime.utcnow()}
 
-contact = {"name": "Pete",
-        "phone": "07884 123123",
-        "address": ["my house, 123 the street"],}
+contact = {'name': 'Pete',
+        'phone': '07884 123123',
+        'address': ['my house, 123 the street'],}
 
-import pdb; pdb.set_trace()
+mixup = {'author': 'Mike',
+        'phone': '07884 123123',
+        'address': ['my house, 123 the street'],}
 
 # start the client
 client = MongoClient()
@@ -32,19 +34,23 @@ result = collection.insert_one(post)
 id = result.inserted_id
 
 # show the object id
-print id
+# print id
 
 # print the first document returned from the collection
 doc = collection.find_one()
 print doc
 
-# now insert the contact
+# now insert the contact and the other one
 result = collection.insert_one(contact)
+result = collection.insert_one(mixup)
 
 # query the collection
 print collection.find_one({'text': 'My first blog post!'})
 print collection.find_one({'phone': '07884 123123'})
 
+# find all documents matching this search and then iterate over the result
+for item in collection.find({'author': 'Mike'}):
+        print item
 
 # drop the database
 import pdb; pdb.set_trace()
