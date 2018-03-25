@@ -32,11 +32,10 @@ result = collection.insert_one(post)
 
 # the result object has a record of the automatically inserted id
 id = result.inserted_id
+print id
 
-# show the object id
-# print id
-
-# print the first document returned from the collection
+# find_one() <--
+# find the first document returned from the collection
 doc = collection.find_one()
 print doc
 
@@ -44,12 +43,27 @@ print doc
 result = collection.insert_one(contact)
 result = collection.insert_one(mixup)
 
-# query the collection
+# find_one() <--
+# find the first document returned from the collection that matches
 print collection.find_one({'text': 'My first blog post!'})
 print collection.find_one({'phone': '07884 123123'})
 
-# find all documents matching this search and then iterate over the result
-for item in collection.find({'author': 'Mike'}):
+# find() <--
+# find all documents matching this search and return a 'pymongo.cursor.Cursor'
+# then iterate over the results
+results = collection.find({'author': 'Mike'})
+for item in results:
+        print item
+
+# cursor has count method
+print results.count()
+
+# find() <--
+# range queries and sort
+# https://docs.mongodb.com/manual/reference/operator/query/
+d = datetime.datetime(2009, 11, 12, 12)
+results = collection.find({"date": {"$gt": d}}).sort("author")
+for item in results:
         print item
 
 # drop the database
