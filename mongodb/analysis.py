@@ -23,11 +23,24 @@ collection = db.crime_database
 result = collection.insert_many(data)
 
 # analysis
-query = collection.find({}, {'_id': 0, 'date': 1})
-for i in query:
+print '========================'
+results = collection.find({},                    # where this is true
+                          {'_id': 0, 'date': 1}, # select these fields
+                          )
+for i in results:
     print i
+print '========================'
+
+print '========================'
+results = collection.find(
+    {'$and':[{'date':'2018-01'}, {'stop-and-search': {'$exists': 'true', '$in': ['btp']}}]}
+)
+for i in results:
+    print i
+print '========================'
 
 import pdb; pdb.set_trace()
+client.drop_database(db)
 pass
 
 
