@@ -33,7 +33,9 @@ print '========================'
 
 print '========================'
 results = collection.find(
-    {'$and':[{'date':'2018-01'}, {'stop-and-search': {'$exists': 'true', '$in': ['btp']}}]}
+    {'$and': [{'date':'2018-01'},
+              {'stop-and-search': {'$exists': 'true', '$in': ['btp']}},
+              ]}
 )
 for i in results:
     print i
