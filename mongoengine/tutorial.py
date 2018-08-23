@@ -1,5 +1,5 @@
-
 from tutorial_dao import *
+
 
 ross = User(email='ross@example.com')
 ross.first_name = 'Ross'
