@@ -1,6 +1,13 @@
 from mongoengine import *
 
-connect('tumblelog')
+
+host = r'cos-mongo.documents.azure.com'
+port = 10255
+username = r'cos-mongo'
+password = r'GG1Xa8phchZIJDKNo0Y40xiKEeLI60yBZUHJqMQicbmm1Zie980YSc2G63dRSRPtKtdoFVqrnqirV4nXqJfXaQ=='
+connection_string = r'mongodb://cos-mongo:GG1Xa8phchZIJDKNo0Y40xiKEeLI60yBZUHJqMQicbmm1Zie980YSc2G63dRSRPtKtdoFVqrnqirV4nXqJfXaQ==@cos-mongo.documents.azure.com:10255/?ssl=true&replicaSet=globaldb'
+
+connect(db='tumblelog', host=host, port=port, username=username, password=password)
 
 class User(Document):
     email = StringField(required=True)
@@ -32,3 +39,4 @@ class ImagePost(Post):
 
 class LinkPost(Post):
     link_url = StringField()
+
