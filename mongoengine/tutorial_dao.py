@@ -1,15 +1,13 @@
 from mongoengine import *
 
 
-host_template = r'{0}:{1}/cos-mongo.documents.azure.com'
+host_template = r'{username}:{password}/cos-mongo.documents.azure.com'
 host = r'cos-mongo.documents.azure.com'
 port = 10255
 username = r'cos-mongo'
 password = r'GG1Xa8phchZIJDKNo0Y40xiKEeLI60yBZUHJqMQicbmm1Zie980YSc2G63dRSRPtKtdoFVqrnqirV4nXqJfXaQ=='
-connection_string = r'mongodb://cos-mongo:GG1Xa8phchZIJDKNo0Y40xiKEeLI60yBZUHJqMQicbmm1Zie980YSc2G63dRSRPtKtdoFVqrnqirV4nXqJfXaQ==@cos-mongo.documents.azure.com:10255/?ssl=true&replicaSet=globaldb'
 
-#host = host_template.format(username, password)
-print('host = ', host)
+host = host_template.format(username=username, password=password)
 connect(db='tumblelog', host=host, port=port, username=username, password=password)
 
 
