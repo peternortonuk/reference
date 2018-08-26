@@ -1,14 +1,35 @@
 from mongoengine import *
+from collections import namedtuple
+import urllib
+
+# config settings
+connection_details = namedtuple('connection_details', 'host, port, username, password')
+
+azure = connection_details(
+    'cos-mongo.documents.azure.com',
+    10255,
+    r'cos-mongo',
+    r'GG1Xa8phchZIJDKNo0Y40xiKEeLI60yBZUHJqMQicbmm1Zie980YSc2G63dRSRPtKtdoFVqrnqirV4nXqJfXaQ=='
+)
+
+local = connection_details(
+    r'mongodb://localhost',
+    27017,
+    None,
+    None,
+)
+
+# select and create connection
+selected_connection = local  # <-- set it here
 
 
-host_template = r'{username}:{password}/cos-mongo.documents.azure.com'
-host = r'cos-mongo.documents.azure.com'
-port = 10255
-username = r'cos-mongo'
-password = r'GG1Xa8phchZIJDKNo0Y40xiKEeLI60yBZUHJqMQicbmm1Zie980YSc2G63dRSRPtKtdoFVqrnqirV4nXqJfXaQ=='
-
-host = host_template.format(username=username, password=password)
-connect(db='tumblelog', host=host, port=port, username=username, password=password)
+# define connection
+print('host = ', selected_connection.host)
+print('port = ', selected_connection.port)
+connect(db='tumblelog', host=selected_connection.host,
+                        port=selected_connection.port,
+                        username=selected_connection.username,
+                        password=selected_connection.password)
 
 
 class User(Document):
