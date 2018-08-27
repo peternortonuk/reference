@@ -20,7 +20,7 @@ local = connection_details(
 )
 
 # select and create connection
-selected_connection = local  # <-- set it here
+selected_connection = azure  # <-- set it here
 
 
 # define connection

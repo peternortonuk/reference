@@ -1,0 +1,13 @@
+from enaml.widgets.api import Window, Container, Label
+
+# defining start of definition block; enaml-run looks for Main
+# Window --> Container --> Label
+
+enamldef Main(Window):
+    attr message = "Hello, world!"
+    Container:
+        Label:
+            text = message
+
+# run this at the command line
+# >>enaml-run hello_world_view.enaml
