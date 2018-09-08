@@ -21,5 +21,3 @@ post2.link_url = 'http://docs.mongoengine.com/'
 post2.tags = ['mongoengine']
 post2.save()
 
-import pdb; pdb.set_trace()
-pass

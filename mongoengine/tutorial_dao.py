@@ -3,11 +3,12 @@ from collections import namedtuple
 import urllib
 
 # config settings
-connection_details = namedtuple('connection_details', 'host, port, username, password')
+connection_details = namedtuple('connection_details', 'host, port, ssl, username, password')
 
 azure = connection_details(
     'cos-mongo.documents.azure.com',
     10255,
+    True,
     r'cos-mongo',
     r'GG1Xa8phchZIJDKNo0Y40xiKEeLI60yBZUHJqMQicbmm1Zie980YSc2G63dRSRPtKtdoFVqrnqirV4nXqJfXaQ=='
 )
@@ -15,6 +16,7 @@ azure = connection_details(
 local = connection_details(
     r'mongodb://localhost',
     27017,
+    False,
     None,
     None,
 )
@@ -29,7 +31,8 @@ print('port = ', selected_connection.port)
 connect(db='tumblelog', host=selected_connection.host,
                         port=selected_connection.port,
                         username=selected_connection.username,
-                        password=selected_connection.password)
+                        password=selected_connection.password,
+                        ssl=selected_connection.ssl)
 
 
 class User(Document):
