@@ -93,7 +93,7 @@ enamldef EmployeeView(Window): main:
     attr employee
     title << "Employee: %s, %s" % (employee.last_name, employee.first_name)
     Container:
-        constraints << gen_constraints(top_box, btm_box, btm_box.visible)
+        #constraints << gen_constraints(top_box, btm_box, btm_box.visible)
         GroupBox: top_box:
             alias form: top_form
             share_layout = True
