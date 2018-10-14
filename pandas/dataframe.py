@@ -41,6 +41,19 @@ note this warning about chaining:
 http://pandas.pydata.org/pandas-docs/stable/indexing.html#why-does-assignment-fail-when-using-chained-indexing
 '''
 
+# where method
+# https://pandas.pydata.org/pandas-docs/stable/indexing.html#the-where-method-and-masking
+# Selecting values from a DataFrame with a boolean criterion now also preserves input data shape.
+# where is used under the hood as the implementation
+
+df[df['num1']>-1]
+df.where(df['num1'] > -1)
+
+# but where gives more options
+dfx = df.where(df['num1'] > 1, other=999)
+print(dfx)
+
+
 print('===============')
 
 # ===================================================================================
