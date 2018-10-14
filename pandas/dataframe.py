@@ -2,27 +2,6 @@ import pandas as pd
 import numpy as np
 from sklearn import datasets
 
-# ===================================================================================
-# concatenate and update
-
-# import some data
-iris = datasets.load_iris()
-
-# create dataframe from numpy arrays
-df_data = pd.DataFrame(data=iris.data, columns=iris.feature_names)
-df_target = pd.DataFrame(data=iris.target, columns=['target'])
-
-# concatenate
-df = pd.concat([df_data, df_target], axis=1)
-
-# create mask
-mask = df['sepal length (cm)'] > 5.0
-
-# update values as df.loc[rows, columns]
-df.loc[mask, 'sepal width (cm)'] = 20
-
-print(df.head())
-print('===============')
 
 # ===================================================================================
 # slicing
@@ -55,12 +34,14 @@ print()
 # reversing order of chaining doesnt matter
 dfx = df['num1'][mask]
 print(dfx.head())
-print('===============')
+print()
 
 '''
 note this warning about chaining:
 http://pandas.pydata.org/pandas-docs/stable/indexing.html#why-does-assignment-fail-when-using-chained-indexing
 '''
+
+print('===============')
 
 # ===================================================================================
 # copying
@@ -82,6 +63,7 @@ print('df1\n', df1.applymap(id))
 print('df2\n', df2.applymap(id))
 print('df3\n', df3.applymap(id))
 print('df4\n', df4.applymap(id))
+print()
 
 # print the data
 print('df1\n', df1)
@@ -97,12 +79,12 @@ if it was a true deep copy should have had new ids for the lists contained withi
 https://github.com/pandas-dev/pandas/issues/17406
 '''
 
-
+print('===============')
 
 # ===================================================================================
 # apply
 
-# create df; normal constructor tries to parse list as columns
+# create df; normal constructor tries to parse list as columns, so cant use it
 data = [[1, 2, 3], [2, 3], [4]]
 column = 'lists'
 df = pd.DataFrame.from_dict({column: data})
@@ -126,6 +108,7 @@ print(dfx)
 dfy = dfx.apply(np.sum, axis=0, result_type='broadcast')
 print(dfy)
 
+print('===============')
 
 # ===================================================================================
 # merge, join & concat
@@ -142,8 +125,20 @@ Or concat, which is outer join by default:
 pd.concat([df1, df2], axis=1)
 '''
 
+# import some data
+iris = datasets.load_iris()
 
+# create dataframe
+df_data = pd.DataFrame(data=iris.data, columns=iris.feature_names)
+df_target = pd.DataFrame(data=iris.target, columns=['target'])
 
+# concatenate
+df = pd.concat([df_data, df_target], axis=1)
+print(df.head())
+
+print('===============')
+
+# ===================================================================================
 
 
 pass
