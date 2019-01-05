@@ -1,9 +1,16 @@
+'''
+https://docs.sqlalchemy.org/en/latest/core/tutorial.html
+'''
+
 from sqlalchemy import create_engine
 from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey
-from config import filedb, memorydb
+from config import filedb1, memorydb
 
 
-# define the schema
+# define schema
+#   MetaData defines the collection of Table objects
+#   and associated child Column objects
+
 metadata = MetaData()
 
 users = Table('users', metadata,
@@ -19,8 +26,8 @@ addresses = Table('addresses', metadata,
                   )
 
 # create engine
-engine = create_engine(filedb, echo=True)
+engine = create_engine(filedb1, echo=True)
 
-# create the schema
+# create schema in the db
 metadata.create_all(engine)
 

@@ -1,15 +1,17 @@
 from sqlalchemy import create_engine
-from config import filedb, memorydb
+from config import filedb1, memorydb
 from sqlexpr_create import users
 
-# define an insert statement for the users table
-ins = users.insert().values(name='jack', fullname='Jack Jones')
+# create engine
+engine = create_engine(filedb1, echo=True)
 
-# create a connection
-engine = create_engine(filedb, echo=True)
+# create connection
 conn = engine.connect()
 
-# execute the insert statement
+# define inserts
+ins = users.insert().values(name='jack', fullname='Jack Jones')
+
+# execute on the db
 result = conn.execute(ins)
 
 # view the automatically generated id

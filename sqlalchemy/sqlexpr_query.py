@@ -1,11 +1,12 @@
 from sqlalchemy import create_engine
-from sqlalchemy.sql import text
-from sqlalchemy.sql import select
-from config import filedb, memorydb
+from sqlalchemy.sql import select, text
+from config import filedb1, memorydb
 from sqlexpr_create import users
 
+# create engine
+engine = create_engine(filedb1, echo=True)
+
 # create connection
-engine = create_engine(filedb, echo=True)
 conn = engine.connect()
 
 # select from the table
