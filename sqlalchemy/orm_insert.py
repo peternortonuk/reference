@@ -10,7 +10,7 @@ engine = create_engine(filedb2, echo=True)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-# define inserts
+# define inserts; add them to the session
 session.add_all([
      User(name='wendy', fullname='Wendy Williams', password='foobar'),
      User(name='mary', fullname='Mary Contrary', password='xxg527'),
