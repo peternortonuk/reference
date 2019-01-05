@@ -1,10 +1,11 @@
 from sqlalchemy import create_engine
 from sqlalchemy.sql import text
 from sqlalchemy.sql import select
-from create_testdb import users
+from config import filedb, memorydb
+from sqlexpr_create import users
 
-# connect to file db
-engine = create_engine('sqlite:///mytest.db', echo=True)
+# create connection
+engine = create_engine(filedb, echo=True)
 conn = engine.connect()
 
 # select from the table
