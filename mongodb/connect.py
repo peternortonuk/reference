@@ -32,12 +32,12 @@ result = collection.insert_one(post)
 
 # the result object has a record of the automatically inserted id
 id = result.inserted_id
-print id
+print(id)
 
 # find_one() <--
 # find the first document returned from the collection
 doc = collection.find_one()
-print doc
+print(doc)
 
 # now insert the contact and the other one
 result = collection.insert_one(contact)
@@ -45,18 +45,18 @@ result = collection.insert_one(mixup)
 
 # find_one() <--
 # find the first document returned from the collection that matches
-print collection.find_one({'text': 'My first blog post!'})
-print collection.find_one({'phone': '07884 123123'})
+print(collection.find_one({'text': 'My first blog post!'}))
+print(collection.find_one({'phone': '07884 123123'}))
 
 # find() <--
 # find all documents matching this search and return a 'pymongo.cursor.Cursor'
 # then iterate over the results
 results = collection.find({'author': 'Mike'})
 for item in results:
-        print item
+        print(item)
 
 # cursor has count method
-print results.count()
+print(results.count())
 
 # find() <--
 # range queries and sort
@@ -64,7 +64,7 @@ print results.count()
 d = datetime.datetime(2009, 11, 12, 12)
 results = collection.find({"date": {"$gt": d}}).sort("author")
 for item in results:
-        print item
+        print(item)
 
 # drop the database
 import pdb; pdb.set_trace()

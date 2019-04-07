@@ -31,6 +31,7 @@ class DoMul42(AbstractClassExample):
     def do_something(self):
         return self.value * 42
 
+import pdb; pdb.set_trace()
 
 x = DoAdd42(10)
 y = DoMul42(10)

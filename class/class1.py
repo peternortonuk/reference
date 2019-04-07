@@ -14,6 +14,7 @@ Location: Google Drive \Media\Video\Python Programming Language
 # Classes and methods
 
 class A(object):
+
     def f(self, x):
         return x+1
 

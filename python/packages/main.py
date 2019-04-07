@@ -11,8 +11,8 @@ and if it finds one, it will treat that folder and its contents as a package.
 
 
 # load the .py files as a module
-import parrot.fighting
-from parrot.feeding import drinking
+import ..parrot.fighting
+from ..parrot.feeding import drinking
 # module given an alias
 from parrot import flying as fl
 
@@ -31,4 +31,4 @@ drinking.drinking()
 fl.flying()
 eating()
 ch()
-print apples
+print(apples)
