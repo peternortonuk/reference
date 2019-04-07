@@ -1,3 +1,17 @@
+'''
+Python Programming Language
+By David Beazley
+
+Publisher: Pearson
+
+Release Date: August 2016
+
+Duration: 6 hours 26 minutes
+
+
+Saved in: Google Drive \Media\Video\Python Programming Language
+'''
+
 
 # ==============================================================================
 # Classes and methods
@@ -126,15 +140,15 @@ if __name__ == "__main__":
     print('===== Classes and methods =====')
     # need to instantiate the object first
     # this is a bound method call
-    print A().f(3)
+    print(A().f(3))
 
     # A.f() is an unbound method call, for that reason we need to pass self
     obj = A()
-    print A.f(obj, 3)
+    print(A.f(obj, 3))
 
     # don't need the object, just the class
-    print B.f(4)
-    print C.f(5)
+    print(B.f(4))
+    print(C.f(5))
 
     print('===== Instantiating and attributes =====')
     # instantiate the object
@@ -143,7 +157,7 @@ if __name__ == "__main__":
     # we can call a method in separate stages
     m = h.sell
     m(25)
-    print h.shares
+    print(h.shares)
 
     # only has get, set & delete for attributes
     print(getattr(h, 'name'))
@@ -197,6 +211,6 @@ if __name__ == "__main__":
     g1 = Grandchild1(101)
     print(g1.value)
     g1.spam()  # g1.spam calls super; next in line is Child2 where inheritance halts; Parent1 has no spam method
-    print Grandchild1.__mro__
+    print(Grandchild1.__mro__)
 
     pass
