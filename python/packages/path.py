@@ -22,5 +22,5 @@ from pprint import pprint as pp
 pp(sys.path)
 
 # this module modifies the standard path
-print site.__file__
+print(site.__file__)
 pass

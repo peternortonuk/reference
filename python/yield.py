@@ -65,7 +65,7 @@ pass
 
 
 '''
-david beazley: iteration protocol and customisatoin via generators
+david beazley: iteration protocol and customisation via generators
 saved to google drive
 62-14.1
 '''

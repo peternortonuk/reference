@@ -1,2 +1,2 @@
 def flying():
-    print'flying'
+    print('flying')

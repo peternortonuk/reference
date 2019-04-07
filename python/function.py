@@ -1,23 +1,23 @@
 
 # nested function; argument scope includes nested function
-
 def foo(arg1, arg2):
     def bar():
         print(arg1, arg2)
     bar()
 
-foo('hello', 'world')
-
-
 
 # nested function returning function
-
-def foo(arg1, arg2):
-    def bar():
+def ham(arg1, arg2):
+    def spam():
         print(arg1, arg2)
-    return bar
+    return spam
 
-x = foo('hello', 'world')
+# ==============================================================================
+import pdb; pdb.set_trace()
+
+foo('hello', 'world')
+
+x = ham('hello', 'world')
 x()
 
 pass

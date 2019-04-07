@@ -4,9 +4,9 @@ import sys
 # =====================================================
 # command line arguments
 
-print "The script is: ", sys.argv[0]
-print "The arguments are: "
-print sys.argv[1:]
+print("The script is: ", sys.argv[0])
+print("The arguments are: ")
+print(sys.argv[1:])
 
 
 '''

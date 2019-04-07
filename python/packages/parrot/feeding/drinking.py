@@ -1,2 +1,2 @@
 def drinking():
-    print'drinking'
+    print('drinking')

@@ -1,7 +1,7 @@
 def eating():
-    print 'eating'
+    print('eating')
 
 def chomping():
-    print 'chomping'
+    print('chomping')
 
 apples = ['red', 'round', 'tasty']

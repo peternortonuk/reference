@@ -1,2 +1,2 @@
 def fighting():
-    print'fighting'
+    print('fighting')
