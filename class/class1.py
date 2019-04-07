@@ -1,15 +1,12 @@
 '''
 Python Programming Language
 By David Beazley
-
 Publisher: Pearson
-
 Release Date: August 2016
-
 Duration: 6 hours 26 minutes
 
+Location: Google Drive \Media\Video\Python Programming Language
 
-Saved in: Google Drive \Media\Video\Python Programming Language
 '''
 
 

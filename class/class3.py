@@ -1,3 +1,13 @@
+'''
+Python Programming Language
+By David Beazley
+Publisher: Pearson
+Release Date: August 2016
+Duration: 6 hours 26 minutes
+
+Location: Google Drive \Media\Video\Python Programming Language
+45-10.1 Instance Representation, Attribute Access and Naming Conventions
+'''
 
 class Holding(object):
     def __init__(self, name, date, shares, price):
@@ -19,18 +29,24 @@ class Holding(object):
         self.shares -= nshares
 
 
+from pprint import pprint
+import pdb; pdb.set_trace()
+
 x = {'shares': 100, 'date': '2007-06-11', 'name': 'AA', 'price': 32.2}
 h = Holding(**x)
+print(h)
+print
 
-# attributes held as a dict on the object
-print h.__dict__
+# everything is in a dict so...
+# ...attributes are held in the dict
+print(h.__dict__)
 h.shares = 50
-print h.__dict__
+print(h.__dict__)
+print
 
-# methods held as a dict on the class
-print Holding.__dict__
-print Holding.__dict__['cost'](h)
-
-
-
-pass
+# ... and methods are held there too
+pprint(Holding.__dict__)
+foo = Holding.__dict__['cost']
+print(foo)  # foo is the method
+print(foo(h))  # call the method and pass the object as self
+print
