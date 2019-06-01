@@ -97,6 +97,21 @@ print('===============')
 # ===================================================================================
 # apply
 
+rectangles = [
+    { 'height': 40, 'width': 10 },
+    { 'height': 20, 'width': 9 },
+    { 'height': 3.4, 'width': 4 }
+]
+rectangles_df = pd.DataFrame(rectangles)
+
+
+def calculate_area(row):
+    return row['height'] * row['width']
+
+
+rectangles_df.apply(calculate_area, axis=1)
+
+# ================================
 # create df; normal constructor tries to parse list as columns, so cant use it
 data = [[1, 2, 3], [2, 3], [4]]
 column = 'lists'
