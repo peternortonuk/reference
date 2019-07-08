@@ -40,7 +40,7 @@ def create_connection_and_list_dbs(host, replicaset, username, password):
             print row
 
 
-host_key = raw_input('Environment: ')
+host_key = raw_input('Environment [prod or dev]: ')
 svc_user_key = raw_input('User [prod, dev or username]: ')
 
 host = connect_dict[host_key]['host']
