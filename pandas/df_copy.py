@@ -1,6 +1,7 @@
 import pandas as pd
+from data import date_df
 
-df1 = pd.DataFrame(data=[0, 1, 2])
+df1 = date_df
 
 df2 = df1  # same df object id therefore same data
 df3 = df2.copy(deep=False)  # new df object id but referenced to same data; changes are reflected

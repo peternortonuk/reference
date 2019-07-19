@@ -1,6 +1,8 @@
 # coding: utf-8
 
-# ===================================================================================
+import numpy as np
+from data import rectangles_df, lists_df
+
 '''
 apply: apply a function along an axis of the Dataframe
 applymap: apply a function to a Dataframe elementwise
@@ -15,14 +17,6 @@ axis : {0 or ‘index’, 1 or ‘columns’}, default 0
 # apply
 
 print('=== apply ===\n')
-
-rectangles = [
-    {'height': 40, 'width': 10},
-    {'height': 20, 'width': 9},
-    {'height': 3.4, 'width': 4}
-]
-rectangles_df = pd.DataFrame(rectangles)
-
 
 def calculate_area(row):
     return row['height'] * row['width']
@@ -48,25 +42,20 @@ This can lead to unexpected behavior if func has side-effects, as they will take
 '''
 
 print('=== applymap ===\n')
-
-# create df; normal constructor tries to parse list as columns, so cant use it
-data = [[1, 2, 3], [2, 3], [4]]
-column = 'lists'
-df = pd.DataFrame.from_dict({column: data})
-print(df)
+print(lists_df)
 
 # this appends twice; append method returns None but does modify the df
-dfx = df.applymap(lambda x: x.append(5))
-print(df)  # modified df
+dfx = lists_df.applymap(lambda x: x.append(5))
+print(lists_df)  # modified df
 print(dfx)  # returns None
 
 # this appends once
-dfx = df.applymap(lambda x: x + [6])
-print(df)  # original unchanged
+dfx = lists_df.applymap(lambda x: x + [6])
+print(lists_df)  # original unchanged
 print(dfx)  # returns desired result
 
 # this works fine
-dfx = df.applymap(lambda x: len(x))
+dfx = lists_df.applymap(lambda x: len(x))
 print(dfx)
 
 # now combine with apply; which is an aggregate function
