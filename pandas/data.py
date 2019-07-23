@@ -30,3 +30,21 @@ iris = datasets.load_iris()
 df_data = pd.DataFrame(data=iris.data, columns=iris.feature_names)
 df_target = pd.DataFrame(data=iris.target, columns=['target'])
 
+
+# create df with multiindex columns
+arrays = [['bar', 'bar', 'baz', 'baz', 'foo', 'foo', 'qux', 'qux'],
+            ['one', 'two', 'one', 'two', 'one', 'two', 'one', 'two']
+          ]
+tuples = list(zip(*arrays))
+index = pd.MultiIndex.from_tuples(tuples, names=['first', 'second'])
+df_multi_col = pd.DataFrame(np.random.randn(3, 8), index=['A', 'B', 'C'], columns=index)
+
+
+# create two dfs to outer join
+df_pair1 = pd.DataFrame(data=np.random.randn(4, 2), index=[0, 1, 2, 3], columns=['A', 'B'])
+df_pair1['source'] = 'pair1'
+df_pair2 = pd.DataFrame(data=np.random.randn(4, 2), index=[2, 3, 4, 5], columns=['A', 'B'])
+df_pair2['source'] = 'pair2'
+df_join = pd.concat([df_pair1, df_pair2], axis='columns', keys=['first', 'second'])
+
+
