@@ -10,25 +10,25 @@ print(date_df, '\n')
 single_date = pd.to_datetime('05-May-2018')
 
 # slice on index and single column
-dfx = date_df.loc[single_date:, 'num1']
+dfx = date_df.loc[single_date:, 'A']
 print(dfx, '\n')
 
 # slice on boolean and list of columns; see change in column order
-mask = date_df['num1'] < 0
-dfx = date_df.loc[mask, ['num2', 'num1']]
+mask = date_df['A'] < 0
+dfx = date_df.loc[mask, ['B', 'A']]
 print(dfx, '\n')
 
 # chaining; but see warning below
-dfx = date_df[mask]['num1']
+dfx = date_df[mask]['A']
 print(dfx, '\n')
 
 # reversing order of chaining doesnt matter
-dfx = date_df['num1'][mask]
+dfx = date_df['A'][mask]
 print(dfx, '\n')
 
 # compare setting values with these two approaches
-date_df[mask]['num1'] = 999  # SettingWithCopyWarning: A value is trying to be set on a copy of a slice from a DataFrame
-date_df.loc[mask, 'num1'] = 999  # happy joy
+date_df[mask]['A'] = 999  # SettingWithCopyWarning: A value is trying to be set on a copy of a slice from a DataFrame
+date_df.loc[mask, 'A'] = 999  # happy joy
 
 '''
 note this warning about chaining:
@@ -43,10 +43,10 @@ Selecting values from a DataFrame with a boolean criterion now also preserves in
 where is used under the hood as the implementation
 '''
 
-date_df[date_df['num1'] > -1]
-date_df.where(date_df['num1'] > -1)
+date_df[date_df['A'] > -1]
+date_df.where(date_df['A'] > -1)
 
 # but where gives more options
-dfx = date_df.where(date_df['num1'] > 1, other=999)
+dfx = date_df.where(date_df['A'] > 1, other=999)
 print(dfx, '\n')
 
