@@ -1,4 +1,5 @@
 from itertools import chain
+from more_itertools import collapse
 
 # ==============================================================================
 # list of lists
@@ -8,6 +9,7 @@ iterator = chain.from_iterable(lst)
 flatten = list(iterator)
 
 print(flatten)
+
 
 # ==============================================================================
 # list of mixed types
@@ -45,6 +47,14 @@ lst = [['aaaa', 'b', 'c'], ['x', 'y', 'z']]
 flatten = sum(lst, [])
 
 print(flatten)
+
+
+# ==============================================================================
+# flatten using more-itertools.collapse
+
+lst = ['aaaa', 'b', 'c', ['xxx', 'y', 'z']]
+x = [i for i in collapse(lst)]  # not sure why list constructor doesnt work
+print(x)
 
 import pdb; pdb.set_trace()
 pass
