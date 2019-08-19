@@ -13,7 +13,7 @@ df_join = pd.concat([df_pair1, df_pair2], axis='columns', keys=['first', 'second
 
 
 # when only one of the pair is required
-date_df = df_pair1.copy(deep=True)
+df_short_dates = df_pair1.copy(deep=True)
 
 # create df with labelled columns
 rectangles = [
@@ -45,3 +45,6 @@ tuples = list(zip(*arrays))
 index = pd.MultiIndex.from_tuples(tuples, names=['first', 'second'])
 df_multi_col = pd.DataFrame(np.random.randn(3, 8), index=['A', 'B', 'C'], columns=index)
 
+# create long df of dates
+days = 1000
+df_long_dates = pd.DataFrame(data=np.random.randn(days, 1), index=pd.date_range(start='01-Jan-2018', periods=days), columns=['price'])

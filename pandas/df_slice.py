@@ -1,34 +1,34 @@
 # coding: utf-8
 import pandas as pd
-from data import date_df
+from data import df_short_dates
 
 
 # df with a date index
-print(date_df, '\n')
+print(df_short_dates, '\n')
 
 # a single date for comparison with the index
 single_date = pd.to_datetime('05-May-2018')
 
 # slice on index and single column
-dfx = date_df.loc[single_date:, 'A']
+dfx = df_short_dates.loc[single_date:, 'A']
 print(dfx, '\n')
 
 # slice on boolean and list of columns; see change in column order
-mask = date_df['A'] < 0
-dfx = date_df.loc[mask, ['B', 'A']]
+mask = df_short_dates['A'] < 0
+dfx = df_short_dates.loc[mask, ['B', 'A']]
 print(dfx, '\n')
 
 # chaining; but see warning below
-dfx = date_df[mask]['A']
+dfx = df_short_dates[mask]['A']
 print(dfx, '\n')
 
 # reversing order of chaining doesnt matter
-dfx = date_df['A'][mask]
+dfx = df_short_dates['A'][mask]
 print(dfx, '\n')
 
 # compare setting values with these two approaches
-date_df[mask]['A'] = 999  # SettingWithCopyWarning: A value is trying to be set on a copy of a slice from a DataFrame
-date_df.loc[mask, 'A'] = 999  # happy joy
+df_short_dates[mask]['A'] = 999  # SettingWithCopyWarning: A value is trying to be set on a copy of a slice from a DataFrame
+df_short_dates.loc[mask, 'A'] = 999  # happy joy
 
 '''
 note this warning about chaining:
@@ -43,10 +43,10 @@ Selecting values from a DataFrame with a boolean criterion now also preserves in
 where is used under the hood as the implementation
 '''
 
-date_df[date_df['A'] > -1]
-date_df.where(date_df['A'] > -1)
+df_short_dates[df_short_dates['A'] > -1]
+df_short_dates.where(df_short_dates['A'] > -1)
 
 # but where gives more options
-dfx = date_df.where(date_df['A'] > 1, other=999)
+dfx = df_short_dates.where(df_short_dates['A'] > 1, other=999)
 print(dfx, '\n')
 
