@@ -8,15 +8,9 @@ http://strftime.org/
 
 '''
 
-import datetime
 import pprint as pp
 import pandas as pd
 import numpy as np
-from data import df_long_dates
-
-
-
-import pdb; pdb.set_trace()
 
 
 date_format = '%d-%b-%Y'  # like this '01-Jan-2018'
@@ -30,7 +24,8 @@ start_date_str = '01-Jan-2018'
 end_date_str = '01-Feb-2018'
 winter_start_date_str = '01-Oct-2016'
 clock_change_date = '31-Mar-2019'
-long_end_date_str = '01-Jan-2020'
+
+long_end_date_str = '01-Apr-2020'
 
 # ==============================================================================
 # datetimes
@@ -119,17 +114,19 @@ six_months = pd.DateOffset(months=6)
 
 # generate an index of season dates
 dti = pd.date_range(start=winter_start_date, periods=5, freq=six_months)
-
 # convert from DateTimeIndex to PeriodIndex
-p = dti.to_period(freq='6M')
+periods = dti.to_period(freq='6M')
 
 # build the dataset required for analysis
-start = p.start_time.min()
-end = p.end_time.max()
+start = pd.to_datetime(winter_start_date_str)
+end = pd.to_datetime(long_end_date_str)
 index = pd.date_range(start, end, freq='D')
 length = len(index)
 df = pd.DataFrame(data=np.random.randn(length), index=index)
 
 # resample; would be nice to use PeriodIndex; but seems to only support string def
 x = df.resample('6MS')
-print(x.mean())
+x.count()
+
+import pdb; pdb.set_trace()
+pass
