@@ -48,3 +48,38 @@ df_multi_col = pd.DataFrame(np.random.randn(3, 8), index=['A', 'B', 'C'], column
 # create long df of dates
 days = 1000
 df_long_dates = pd.DataFrame(data=np.random.randn(days, 1), index=pd.date_range(start='01-Jan-2018', periods=days), columns=['price'])
+
+
+# market cap data
+df_market_cap = pd.DataFrame([
+        [0, 'Large', 'A', .1, 'a'],
+        [0, 'Large', 'B', .2, 'b'],
+        [0, 'Large', 'C', .1, 'c'],
+        [0, 'Large', 'D', .3, 'd'],
+        [0, 'Large', 'E', .1, 'e'],
+        [0, 'Large', 'F', .4, 'f'],
+        [0, 'Large', 'G', .1, 'g'],
+        [0, 'Small', 'A', .2, 'h'],
+        [0, 'Small', 'B', .3, 'i'],
+        [0, 'Small', 'C', .4, 'j'],
+        [0, 'Small', 'D', .5, 'k'],
+        [0, 'Small', 'E', .1, 'l'],
+        [0, 'Small', 'F', .2, 'm'],
+        [0, 'Small', 'G', .1, 'n'],
+        [1, 'Large', 'A', .1, 'a'],
+        [1, 'Large', 'B', .2, 'b'],
+        [1, 'Large', 'C', .1, 'c'],
+        [1, 'Large', 'D', .3, 'd'],
+        [1, 'Large', 'E', .1, 'e'],
+        [1, 'Large', 'F', .4, 'f'],
+        [1, 'Large', 'G', .1, 'g'],
+        [1, 'Small', 'A', .2, 'h'],
+        [1, 'Small', 'B', .3, 'i'],
+        [1, 'Small', 'C', .4, 'j'],
+        [1, 'Small', 'D', .5, 'k'],
+        [1, 'Small', 'E', .1, 'l'],
+        [1, 'Small', 'F', .2, 'm'],
+        [1, 'Small', 'G', .1, 'n'],
+    ], columns=['EFFECTIVE DATE', 'CAP', 'SECTOR', 'INDEX WEIGHT', 'ID'])
+
+
