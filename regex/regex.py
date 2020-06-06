@@ -41,7 +41,13 @@ named group
 pattern = r'(?P<first_name>\w+) (?P<last_name>\w+)'
 string = 'Malcolm Reynolds'
 result = re.search(pattern, string)
-print(result.group())
+
+print(result.group(0))  # has a special meaning; return all of it
+print(result.group(1))
+print(result.group(2))
+
+print(result.groups())
+
 print(result.groupdict())
 print('.........\n')
 
@@ -76,6 +82,7 @@ Using the RE <.*?> will match only <a>... if the RE <.*> is matched against <a> 
 '\w' match any alphanumeric character and the underscore; equivalent to the set [a-zA-Z0-9_]... has the complement '\W'
 '\A' match the start of the string
 '\Z' match the end of the string
+r'\b' match a word boundary... has the complement '\B'
 
 '''
 
