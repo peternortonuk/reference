@@ -8,12 +8,14 @@ from typing import NamedTuple
 
 @dataclass
 class Color1:
+    # dataclasses are mutable
     hue: int
     saturation: float
     lightness: float = 0.5
 
 
 class Color2(NamedTuple):
+    # can be naturally unpacked
     hue: int
     saturation: float
     lightness: float = 0.5
