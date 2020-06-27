@@ -18,7 +18,7 @@ field specifier supports the following:
 '''
 
 from dataclasses import dataclass, field, fields
-from typing import NamedTuple
+from typing import NamedTuple, List
 
 # ==============================================================
 # compare dataclass and NamedTuple
@@ -63,13 +63,14 @@ print(fields(Position)[2].metadata['unit'], '\n')
 # ==============================================================
 # the decorator writes the __init__
 # but what if you want to append a task after initialisation
+# also shows use of default factory function
 
 RANKS = '2 3 4 5 6 7 8 9 10 J Q K A'.split()
 SUITS = '♣ ♢ ♡ ♠'.split()
 
-@dataclass(order=True)
+@dataclass(order=True)  # we can make comparisons between objects
 class PlayingCard:
-    sort_index: int = field(init=False, repr=False)
+    sort_index: int = field(init=False, repr=False)  # repr=False means only rank and suit are shown
     rank: str
     suit: str
 
@@ -77,5 +78,21 @@ class PlayingCard:
         self.sort_index = (RANKS.index(self.rank) * len(SUITS)
                            + SUITS.index(self.suit))
 
+
+def make_french_deck():
+    return [PlayingCard(r, s) for s in SUITS for r in RANKS]
+
+@dataclass
+class Deck:
+    cards: List[PlayingCard] = field(default_factory=make_french_deck)
+
+y = Deck()
+print(y)
+print(y.cards[4])
+print(y.cards[4].sort_index)
+print(y.cards[4] > y.cards[5], '\n')
+
+# compare with
+print(sorted(make_french_deck()), '\n')
 
 pass
