@@ -1,5 +1,9 @@
 '''
-based on this: https://docs.python.org/2/library/re.html
+sources:
+https://docs.python.org/3/library/re.html
+https://realpython.com/regex-python/
+https://realpython.com/regex-python-part-2/
+https://regex101.com/
 '''
 import re
 
@@ -9,19 +13,21 @@ import re
 Python offers two different primitive operations based on regular expressions: 
    re.match() checks for a SINGLE match only at the BEGINNING of the string, while 
    re.search() checks for a SINGLE match ANYWHERE in the string.
+returns a match object in both cases
 '''
 
 pattern = r'oO'
 string = 'foo bar'
 result = re.search(pattern, string, re.IGNORECASE)
-print(result.group())
+print(result)
 print('.........\n')
 
 
+'''
+re.findall() matches ALL occurrences of a pattern, not just the first one as search() does
+returns a list object only
+'''
 
-'''
-findall() matches ALL occurrences of a pattern, not just the first one as search() does:
-'''
 pattern = r'\w+ly'
 string = "He was carefully disguised but captured quickly by police."
 result = re.findall(pattern, string)
@@ -52,9 +58,53 @@ print(result.groupdict())
 print('.........\n')
 
 
+'''
+Lookahead and Lookbehind Assertions
+Don’t consume any of the search string and aren’t part of the returned match object.
+(?=<lookahead_regex>)
+(?<=<lookbehind_regex>)
+'''
+
+pattern = 'foo(?=[a-z])'  # must be followed by a lower case alphabetic letter
+string = 'foobar'
+result = re.search(pattern, string)
+print(result)
+
+string = 'foo123'
+result = re.search(pattern, string)
+print(result)
+print('.........\n')
+
 
 '''
-basic regex
+Substitute
+re.sub(<regex>, <repl>, <string>, count=0, flags=0)
+Replaces portions of a search string that match a specified regex
+'''
+
+pattern = r'\d+'
+replace = '#'
+string = 'foo.123.bar.789.baz'
+result = re.sub(pattern, replace, string)
+print(result)
+print('.........\n')
+
+
+'''
+Split
+re.split(<regex>, <string>, maxsplit=0, flags=0)
+splits <string> into substrings using <regex> as the delimiter and returns the substrings as a list.
+'''
+
+pattern = r'\d+'
+string = 'foo.123.bar.789.baz'
+result = re.split(pattern, string)
+print(result)
+print('.........\n')
+
+
+'''
+cheat sheet
 ===========
 
 '.' match any character except a newline... if the DOTALL flag has been specified also matches a newline
@@ -83,6 +133,9 @@ Using the RE <.*?> will match only <a>... if the RE <.*> is matched against <a> 
 '\A' match the start of the string
 '\Z' match the end of the string
 r'\b' match a word boundary... has the complement '\B'
+
+Raw string notation (r"text") keeps regular expressions sane. Without it, every backslash ('\') in a regular expression 
+would have to be prefixed with another one to escape it. 
 
 '''
 
