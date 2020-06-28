@@ -61,22 +61,25 @@ print(fields(Position)[2].metadata['unit'], '\n')
 
 
 # ==============================================================
-# the decorator writes the __init__
-# but what if you want to append a task after initialisation
-# also shows use of default factory function
+# demonstrates the post_init; which runs after the auto __init__
+# shows use of default factory function
+# and an example of ordering
 
 RANKS = '2 3 4 5 6 7 8 9 10 J Q K A'.split()
 SUITS = '♣ ♢ ♡ ♠'.split()
 
 @dataclass(order=True)  # we can make comparisons between objects
 class PlayingCard:
-    sort_index: int = field(init=False, repr=False)  # repr=False means only rank and suit are shown
+    # init=False means the field isnt initialised; it's done by the post_init below
+    # repr=False means only rank and suit are shown
+    sort_index: int = field(init=False, repr=False)
     rank: str
     suit: str
 
     def __post_init__(self):
-        self.sort_index = (RANKS.index(self.rank) * len(SUITS)
-                           + SUITS.index(self.suit))
+        # calculate a scalar index for any card
+        # and set the value of the field
+        self.sort_index = RANKS.index(self.rank) * len(SUITS) + SUITS.index(self.suit)
 
 
 def make_french_deck():
@@ -90,9 +93,36 @@ y = Deck()
 print(y)
 print(y.cards[4])
 print(y.cards[4].sort_index)
+
+# because we set order=True and it actually uses the sort_index field
 print(y.cards[4] > y.cards[5], '\n')
 
 # compare with
 print(sorted(make_french_deck()), '\n')
+
+
+# ==============================================================
+# inheritance with post_init
+
+@dataclass
+class Base:
+    x: float
+    y: float
+    z: float = field(init=False)
+
+    def __post_init__(self):
+        print('Called!')
+        self.z = self.x + self.y
+
+@dataclass
+class Child(Base):
+    a: int
+
+    def __post_init__(self):
+        super().__post_init__()
+
+
+obj = Child(a=0, x=1.5, y=2.5)
+print(obj)
 
 pass
