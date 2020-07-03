@@ -2,6 +2,9 @@
 Python OOP Tutorial 6: Property Decorators - Getters, Setters, and Deleters
 https://www.youtube.com/watch?v=jCzT9XFZ5bw
 
+@property: allows use of a method as attributes without calling brackets
+@foo.setter: to set the attribute using '='
+@foo.deleter: to delete it using 'del'
 '''
 
 
