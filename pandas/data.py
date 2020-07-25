@@ -83,3 +83,9 @@ df_market_cap = pd.DataFrame([
     ], columns=['EFFECTIVE DATE', 'CAP', 'SECTOR', 'INDEX WEIGHT', 'ID'])
 
 
+'''
+https://pandas.pydata.org/pandas-docs/stable/getting_started/comparison/comparison_with_sql.html
+'''
+url = ('https://raw.github.com/pandas-dev'
+       '/pandas/master/pandas/tests/io/data/csv/tips.csv')
+tips = pd.read_csv(url)
