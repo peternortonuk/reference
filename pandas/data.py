@@ -89,3 +89,25 @@ https://pandas.pydata.org/pandas-docs/stable/getting_started/comparison/comparis
 url = ('https://raw.github.com/pandas-dev'
        '/pandas/master/pandas/tests/io/data/csv/tips.csv')
 tips = pd.read_csv(url)
+
+# =========================================================================
+# a pair of dataframes for comparison
+
+# index is the date of the price observation
+length = 300
+index = pd.date_range('01-Jan-2018', freq='D', periods=length, name='price_index')
+data = np.random.randn(length)
+columns = ['price']
+df_prices = pd.DataFrame(data=data, index=index, columns=columns)
+
+
+# index is the contract month that has expiry dates in the columns
+length = 5
+index = pd.date_range('01-Jan-2018', freq='MS', periods=length, name='expiry_index')
+data_dict = {
+    'expiry_start': pd.date_range('01-Dec-2017', freq='MS', periods=length),
+    'expiry_end': pd.date_range('01-Dec-2017', freq='M', periods=length),
+    }
+df_expiry = pd.DataFrame(data=data_dict, index=index)
+
+# =========================================================================
