@@ -100,8 +100,7 @@ print('\n=========================================================\n'
 
 x = pd.concat([df1, df2],
               axis='rows',  # concat vertically
-              keys=['df1', 'df2'],  # label the source of the data
-              ).drop_duplicates()  # wont do anything in this case
+              ).drop_duplicates()
 print(x)
 
 
