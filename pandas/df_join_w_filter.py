@@ -53,17 +53,26 @@ print('\n=========================================================\n'
 df_prices = df_prices_copy.copy()
 df_expiry = df_expiry_copy.copy()
 
-start_date_idx = pd.DatetimeIndex(df_expiry['expiry_start'])
-end_date_idx = pd.DatetimeIndex(df_expiry['expiry_end'])+pd.DateOffset(days=1)
+# create expiry index from the start/end column data
+expiry_start_idx = pd.DatetimeIndex(df_expiry['expiry_start'])
+expiry_end_idx = pd.DatetimeIndex(df_expiry['expiry_end']) + pd.DateOffset(days=1)
 
-start_idx = start_date_idx.searchsorted(df_prices.index, side='right') - 1
-end_idx = end_date_idx.searchsorted(df_prices.index, side='right')
+# create new index showing index location of where the price date fits in the expiry index
+#    left: the index of the first suitable location found is given
+#    right: return the last such index
+start_idx = expiry_start_idx.searchsorted(df_prices.index, side='right') - 1
+end_idx = expiry_end_idx.searchsorted(df_prices.index, side='right')
 
+# insert the new index where start and end match
 df_prices['idx'] = np.where(start_idx == end_idx, end_idx, np.nan)
+
+# remove the contract date index and reset to an integer (to match our new expiry index)
 df_expiry.reset_index(inplace=True)
 
+# join on new index; then drop
 df_result3 = pd.merge(df_prices, df_expiry, left_on=['idx'], right_index=True)\
-    .drop(['idx', 'expiry_index'], axis='columns', inplace=True)
+    .drop(['idx', 'expiry_index'], axis='columns')
 print(df_result3)
 
 assert_frame_equal(df_result, df_result3)
+pass
