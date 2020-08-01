@@ -3,6 +3,16 @@ from pandas.testing import assert_frame_equal
 import numpy as np
 from data import df_prices, df_expiry
 
+'''
+Join with a criteria based on the values
+   https://stackoverflow.com/questions/15581829/how-to-perform-an-inner-or-outer-join-of-dataframes-with-pandas-on-non-simplisti
+
+Using searchsorted to merge based on values inside a range
+   https://stackoverflow.com/questions/25125626/pandas-merge-with-logic/2512764
+   https://pandas.pydata.org/pandas-docs/dev/reference/api/pandas.Index.searchsorted.html
+'''
+
+
 df_prices_copy = df_prices.copy()
 df_expiry_copy = df_expiry.copy()
 

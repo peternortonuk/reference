@@ -7,13 +7,6 @@ Merge
 
 Merge two dataframes by index
    https://stackoverflow.com/questions/40468069/merge-two-dataframes-by-index/40468090#40468090
-
-Join with a criteria based on the values
-   https://stackoverflow.com/questions/15581829/how-to-perform-an-inner-or-outer-join-of-dataframes-with-pandas-on-non-simplisti
-
-Using searchsorted to merge based on values inside a range
-   https://stackoverflow.com/questions/25125626/pandas-merge-with-logic/2512764
-   https://pandas.pydata.org/pandas-docs/dev/reference/api/pandas.Index.searchsorted.html
 '''
 
 import pandas as pd
