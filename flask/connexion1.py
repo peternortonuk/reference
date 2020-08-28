@@ -1,9 +1,15 @@
 """
+reference:
+    https://realpython.com/flask-connexion-rest-api/
+    https://github.com/realpython/materials/tree/master/flask-connexion-rest
+
 navigate to here:
    localhost:5000/api/people
 """
+
 from flask import render_template
 import connexion
+from people import PEOPLE
 
 # Create the application instance
 app = connexion.App(__name__, specification_dir='./')
@@ -21,6 +27,14 @@ def home():
     :return:        the rendered template 'home.html'
     """
     return render_template('home.html')
+
+
+@app.route('/test')
+def test():
+    """
+    To check the status of this variable directly as we play with the api
+    """
+    return PEOPLE
 
 
 # If we're running in stand alone mode, run the application
