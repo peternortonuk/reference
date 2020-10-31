@@ -1,10 +1,8 @@
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 import numpy as np
+from data import x, y
 
-n = 50
-x = np.random.randn(n)
-y = x * np.random.randn(n)
 
 # create one figure
 fig = Figure(figsize=(8, 6))
