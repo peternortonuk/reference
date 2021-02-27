@@ -1,3 +1,10 @@
+"""
+https://realpython.com/python-itertools/
+https://docs.python.org/3/library/itertools.html
+https://pymotw.com/3/itertools/index.html
+"""
+
+
 from itertools import chain
 from more_itertools import collapse
 
@@ -56,5 +63,3 @@ lst = ['aaaa', 'b', 'c', ['xxx', 'y', 'z']]
 x = [i for i in collapse(lst)]  # not sure why list constructor doesnt work
 print(x)
 
-import pdb; pdb.set_trace()
-pass
