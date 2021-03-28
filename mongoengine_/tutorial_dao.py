@@ -1,6 +1,5 @@
 from mongoengine import *
 from collections import namedtuple
-import urllib
 
 # config settings
 connection_details = namedtuple('connection_details', 'host, port, ssl, username, password')

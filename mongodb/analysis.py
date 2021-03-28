@@ -1,7 +1,6 @@
 from pymongo import MongoClient
 import json
 import os
-import pprint as pp
 
 # location of json file
 rel_path = r'data'
@@ -23,29 +22,24 @@ collection = db.crime_database
 result = collection.insert_many(data)
 
 # analysis
-print '========================'
-results = collection.find({},                    # where this is true
-                          {'_id': 0, 'date': 1}, # select these fields
+print('========================')
+results = collection.find({},                     # where this is true
+                          {'_id': 0, 'date': 1},  # select these fields
                           )
 for i in results:
-    print i
-print '========================'
+    print(i)
+print('========================')
 
-print '========================'
+print('========================')
 results = collection.find(
-    {'$and': [{'date':'2018-01'},
+    {'$and': [{'date': '2018-01'},
               {'stop-and-search': {'$exists': 'true', '$in': ['btp']}},
               ]}
 )
 for i in results:
-    print i
-print '========================'
+    print(i)
+print('========================')
 
-import pdb; pdb.set_trace()
 client.drop_database(db)
 pass
-
-
-
-
 
