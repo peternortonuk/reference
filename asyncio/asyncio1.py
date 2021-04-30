@@ -16,7 +16,7 @@ async def worker(name, n, session):
     print(f'worker-{name}')
     url = f'https://qrng.anu.edu.au/API/jsonI.php?length={n}&type=uint16'
     response = await session.request(method='GET', url=url)
-    value = await response.text()
+    value = await response.template()
     value = json.loads(value)
     return sum(value['data'])
 
