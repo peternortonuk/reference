@@ -24,4 +24,13 @@ print(
     df_market_cap.query(' `SECTOR` in @mylist ')
 )
 
-print()
+
+'''
+isin method
+https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isin.html
+'''
+
+print(
+    df_market_cap['SECTOR'].isin(mylist)
+)
+
