@@ -1,5 +1,5 @@
 import pandas as pd
-from pandas_.data import df_market_cap
+from pandas_.data import df_market_cap, df_random
 
 '''
 api reference
@@ -65,6 +65,18 @@ print(
 print(
     # if then
     df_market_cap.mask(df_market_cap['INDEX WEIGHT'] > 0.3, -999)
+)
+
+'''
+idxmin/max method
+Return index of first occurrence of minimum over requested axis.
+https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.idxmin.html
+'''
+
+print(
+    df_random,
+    '\n\n',
+    df_random.idxmin(axis='index')
 )
 
 pass

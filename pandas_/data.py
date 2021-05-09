@@ -21,7 +21,13 @@ rectangles = [
     {'height': 20, 'width': 9},
     {'height': 3.4, 'width': 4}
 ]
-rectangles_df = pd.DataFrame(rectangles)
+df_rectangles = pd.DataFrame(rectangles)
+
+
+# create a small square of data
+data = np.random.random_sample(size=(3, 4))
+columns = ['a', 'b', 'c', 'd']
+df_random = pd.DataFrame(data=data, columns=columns)
 
 
 # create df of lists
